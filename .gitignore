@@ -1,0 +1,8 @@
+.vs
+.vscode/
+appsettings.json
+obj/
+bin/
+Chat.sln
+Server.sln
+Server.csproj
