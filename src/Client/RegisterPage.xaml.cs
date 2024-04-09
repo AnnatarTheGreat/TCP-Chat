@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace Chat
 {
-    /// <summary>
-    /// Interaction logic for RegisterPage.xaml
-    /// </summary>
     public partial class RegisterPage : Page
     {
         private Frame _frame;

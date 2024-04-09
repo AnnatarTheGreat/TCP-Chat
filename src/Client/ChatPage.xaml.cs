@@ -18,9 +18,7 @@ using System.Windows.Shapes;
 
 namespace Chat
 {
-    /// <summary>
-    /// Interaction logic for ChatPage.xaml
-    /// </summary>
+   
     public partial class ChatPage : Page
     {
         private Frame _frame;
@@ -42,11 +40,7 @@ namespace Chat
         {
             DisconnectUser(_client, _stream);
             _frame.NavigationService.GoBack();
-           /* Dispatcher.Invoke(
-                () =>
-                {
-                    _frame.Navigate(new RegisterPage(_frame));
-                });*/
+           
         }
 
         private void ButtonSendMessage_Click(object sender, RoutedEventArgs e)

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Net.Sockets;
 
-public class UsersList
+public class UsersList : IUsersList
 {
     private Dictionary<TcpClient, NetworkStream> _users;
 

@@ -1,16 +1,23 @@
-﻿using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using System.Text.Json;
-
-namespace ServerSpace;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 public class Program
 {
     static async Task Main(string[] args)
     {
+
+        var services = new ServiceCollection();
+
+        services.AddSingleton<IMessageListener, MessageListener>();
+        services.AddSingleton<IUserHandler, UserHandler>();
+        services.AddSingleton<IUserReceiver, UserReceiver>();
+        services.AddSingleton<INotifier, Notifier>();
+        services.AddSingleton<IUsersList, UsersList>();
+        services.AddSingleton<Server>();
+
+        var serviceProvider = services.BuildServiceProvider();
+        
+        var server = serviceProvider.GetService<Server>();
         Console.Clear();
-        IServer server = new Server();
         await server.RunAsync();
     }
 }
