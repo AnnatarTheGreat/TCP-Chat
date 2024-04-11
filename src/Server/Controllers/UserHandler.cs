@@ -1,11 +1,11 @@
 public class UserHandler : IUserHandler
 {
     private IUsersList _users;
-    private readonly IMessageListener _messageListener;
+    private readonly IMessageHandler _messageListener;
     private readonly INotifier _notifier;
 
 
-    public UserHandler(IMessageListener messageListener, INotifier notifier, IUsersList users)
+    public UserHandler(IMessageHandler messageListener, INotifier notifier, IUsersList users)
     {
         _messageListener = messageListener;
         _notifier = notifier;

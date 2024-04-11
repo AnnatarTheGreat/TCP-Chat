@@ -3,15 +3,11 @@ using System.Net;
 public class Server
 {
     private TcpListener _server;
-
-    private IUsersList _users;
     private IUserHandler _userHandler;
     private IUserReceiver _userReceiver;
-    public Server(IUsersList users, IUserReceiver userReceiver, IUserHandler userHandler)
+    public Server(IUserReceiver userReceiver, IUserHandler userHandler)
     {
         _server = new TcpListener(IPAddress.Any, 8888);
-
-        _users = users;
 
         _userReceiver = userReceiver;
 
@@ -42,6 +38,5 @@ public class Server
             _server.Stop();
         }
     }
-
 
 }

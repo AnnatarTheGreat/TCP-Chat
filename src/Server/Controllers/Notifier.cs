@@ -1,6 +1,5 @@
 public class Notifier : INotifier
 {
-
     private IUsersList _users;
     public Notifier(IUsersList users)
     {

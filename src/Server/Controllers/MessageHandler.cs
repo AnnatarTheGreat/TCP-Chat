@@ -1,8 +1,8 @@
-public class MessageListener : IMessageListener
+public class MessageHandler : IMessageHandler
 {
     private IUsersList _users;
 
-    public MessageListener(IUsersList users)
+    public MessageHandler(IUsersList users)
     {
         _users = users;
     }
@@ -23,13 +23,7 @@ public class MessageListener : IMessageListener
             }
             if (bytesRead > 0)
             {
-                string message = $"{currentUser.Name}: " + Encoding.UTF8.GetString(buffer, 0, bytesRead);
-                Console.WriteLine(message);
-                byte[] messageBuffer = Encoding.UTF8.GetBytes(message);
-                foreach (var user in _users.GetAllUsersStreams())
-                {
-                    user.Write(messageBuffer, 0, messageBuffer.Length);
-                }
+                SendMessage(currentUser, buffer, bytesRead);
             }
             else
             {
@@ -37,4 +31,18 @@ public class MessageListener : IMessageListener
             }
         }
     }
+
+    public void SendMessage(User currentUser, byte[] buffer, int bytesRead)
+    {
+        string message = $"{currentUser.Name}: " + Encoding.UTF8.GetString(buffer, 0, bytesRead);
+        Console.WriteLine(message);
+        byte[] messageBuffer = Encoding.UTF8.GetBytes(message);
+        foreach (var user in _users.GetAllUsersStreams())
+        {
+            user.Write(messageBuffer, 0, messageBuffer.Length);
+        }
+    }
+
+
+
 }

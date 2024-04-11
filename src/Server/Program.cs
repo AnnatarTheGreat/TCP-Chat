@@ -7,7 +7,7 @@ public class Program
 
         var services = new ServiceCollection();
 
-        services.AddSingleton<IMessageListener, MessageListener>();
+        services.AddSingleton<IMessageHandler, MessageHandler>();
         services.AddSingleton<IUserHandler, UserHandler>();
         services.AddSingleton<IUserReceiver, UserReceiver>();
         services.AddSingleton<INotifier, Notifier>();
@@ -15,7 +15,7 @@ public class Program
         services.AddSingleton<Server>();
 
         var serviceProvider = services.BuildServiceProvider();
-        
+
         var server = serviceProvider.GetService<Server>();
         Console.Clear();
         await server.RunAsync();

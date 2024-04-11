@@ -7,12 +7,12 @@ public class UsersList : IUsersList
 
     public UsersList()
     {
-        _users = new Dictionary<TcpClient,NetworkStream>();
+        _users = new Dictionary<TcpClient, NetworkStream>();
     }
     public void Add(TcpClient client, NetworkStream stream)
     {
         _users.Add(client, stream);
-    }    
+    }
     public void Remove(TcpClient client)
     {
         _users.Remove(client);
