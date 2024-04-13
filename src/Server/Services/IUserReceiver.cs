@@ -1,4 +1,4 @@
 public interface IUserReceiver
 {
-    User ReceiveCurrentUser(TcpClient client, NetworkStream stream);
+    User ReceiveCurrentUser(Socket client, NetworkStream stream);
 }

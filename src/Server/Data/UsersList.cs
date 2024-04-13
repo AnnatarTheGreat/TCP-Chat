@@ -1,19 +1,17 @@
-using System.Collections;
-using System.Net.Sockets;
 
 public class UsersList : IUsersList
 {
-    private Dictionary<TcpClient, NetworkStream> _users;
+    private Dictionary<Socket, NetworkStream> _users;
 
     public UsersList()
     {
-        _users = new Dictionary<TcpClient, NetworkStream>();
+        _users = new Dictionary<Socket, NetworkStream>();
     }
-    public void Add(TcpClient client, NetworkStream stream)
+    public void Add(Socket client, NetworkStream stream)
     {
         _users.Add(client, stream);
     }
-    public void Remove(TcpClient client)
+    public void Remove(Socket client)
     {
         _users.Remove(client);
     }

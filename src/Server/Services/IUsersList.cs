@@ -1,6 +1,6 @@
 public interface IUsersList
 {
-    void Add(TcpClient client, NetworkStream stream);
-    void Remove(TcpClient client);
+    void Add(Socket client, NetworkStream stream);
+    void Remove(Socket client);
     ICollection<NetworkStream> GetAllUsersStreams();
 }

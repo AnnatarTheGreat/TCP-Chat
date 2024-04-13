@@ -1,4 +1,4 @@
 public interface IUserHandler
 {
-    void ProcessClientAsync(TcpClient client, NetworkStream stream, User currentUser);
+    void ProcessClientAsync(Socket client, NetworkStream stream, User currentUser);
 }

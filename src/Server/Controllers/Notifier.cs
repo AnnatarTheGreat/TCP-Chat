@@ -6,7 +6,7 @@ public class Notifier : INotifier
         _users = users;
     }
 
-    public void SendUserLeftNotification(TcpClient client, User currentUser)
+    public void SendUserLeftNotification(Socket client, User currentUser)
     {
         try
         {

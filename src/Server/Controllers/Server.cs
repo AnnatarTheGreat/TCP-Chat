@@ -2,13 +2,13 @@ using System.Net;
 
 public class Server
 {
-    private TcpListener _server;
+    private Socket _server;
     private IUserHandler _userHandler;
     private IUserReceiver _userReceiver;
     public Server(IUserReceiver userReceiver, IUserHandler userHandler)
     {
-        _server = new TcpListener(IPAddress.Any, 8888);
-
+        _server = new Socket(SocketType.Stream, ProtocolType.Tcp);
+        
         _userReceiver = userReceiver;
 
         _userHandler = userHandler;
@@ -17,12 +17,14 @@ public class Server
     {
         try
         {
-            _server.Start();
-            Console.WriteLine("Server is running!");
+            IPEndPoint iPEndPoint = new IPEndPoint(IPAddress.Any, 8888);
+            _server.Bind(iPEndPoint);
+            _server.Listen();
+            Console.WriteLine("Server is listening on");
             while (true)
             {
-                TcpClient client = await _server.AcceptTcpClientAsync();
-                NetworkStream stream = client.GetStream();
+                Socket client = await _server.AcceptAsync();
+                NetworkStream stream  = new NetworkStream(client, ownsSocket: true); 
 
                 User? user = _userReceiver.ReceiveCurrentUser(client, stream);
                 if (user == null)
@@ -35,7 +37,7 @@ public class Server
         }
         finally
         {
-            _server.Stop();
+            _server.Dispose();
         }
     }
 

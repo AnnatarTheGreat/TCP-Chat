@@ -7,7 +7,7 @@ public class MessageHandler : IMessageHandler
         _users = users;
     }
 
-    public void ListenForMessages(TcpClient client, NetworkStream stream, User currentUser)
+    public void ListenForMessages(Socket client, NetworkStream stream, User currentUser)
     {
         while (client.Connected)
         {

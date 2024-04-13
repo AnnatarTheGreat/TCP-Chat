@@ -13,7 +13,7 @@ public class UserHandler : IUserHandler
     }
 
 
-    public async void ProcessClientAsync(TcpClient client, NetworkStream stream, User currentUser)
+    public async void ProcessClientAsync(Socket client, NetworkStream stream, User currentUser)
     {
         try
         {

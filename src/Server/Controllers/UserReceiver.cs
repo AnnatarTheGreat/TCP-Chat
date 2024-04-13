@@ -2,7 +2,7 @@ using System.Text.Json;
 
 public class UserReceiver : IUserReceiver
 {
-    public User ReceiveCurrentUser(TcpClient client, NetworkStream stream)
+    public User ReceiveCurrentUser(Socket client, NetworkStream stream)
     {
         try
         {
